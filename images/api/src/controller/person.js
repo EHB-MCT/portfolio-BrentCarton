@@ -1,3 +1,0 @@
-createPerson(req,response){
-
-}
