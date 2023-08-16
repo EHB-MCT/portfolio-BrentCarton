@@ -4,6 +4,8 @@ require('dotenv').config();
 
 const app = express();
 
+require('./startup/routes')(app);
+
 connectToDB();
 
 const port = process.env.PORT || 5000;
