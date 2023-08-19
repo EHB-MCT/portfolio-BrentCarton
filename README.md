@@ -1,6 +1,6 @@
 # User Tracking System
 
-The User Tracking System is a project that allows you to track users in different rooms and visualize user counts using TouchDesigner.
+The User Tracking System is a project that allows you to track users in different rooms and visualize user counts using TouchDesigner (version 2021.15800).
 
 ## Table of Contents
 - [User Tracking System](#user-tracking-system)
