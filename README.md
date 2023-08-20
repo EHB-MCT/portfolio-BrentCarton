@@ -1,6 +1,9 @@
 # User Tracking System
 
-The User Tracking System is a project that allows you to track users in different rooms and visualize user counts using TouchDesigner (version 2021.15800).
+The User Tracking System is a project that allows you to track users in different rooms and visualize user counts using TouchDesigner (version 2021.15800). 
+
+**Note:** Inside the database, we will track the room in which each user is located and record the duration of their stay. Additionally, we will send the real-time count of users in each room to TouchDesigner to create a dynamic visual representation. Please note that the recorded duration is for informative purposes and does not directly affect the visualization in TouchDesigner.
+
 
 ## Table of Contents
 - [User Tracking System](#user-tracking-system)
@@ -33,7 +36,6 @@ The User Tracking System project consists of the following components:
 - OSC communication setup.
 - Database connection configuration.
 - Environment variables setup.
-- Unit tests for routes and models.
 
 ## Features
 
