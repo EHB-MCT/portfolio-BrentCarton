@@ -31,4 +31,4 @@ services:
       - 3000:3000
 
 volumes:
-  postgres_data: user-tacker-data
+  postgres_data: 
