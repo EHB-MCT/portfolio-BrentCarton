@@ -4,7 +4,7 @@ const Client = require('node-osc').Client;
 const oscClient = new Client(process.env.OSC_CLIENT_HOST, process.env.OSC_CLIENT_PORT);
 
 // Send OSC data on startup
-const sendOSCDataOnStartup = async () => {
+const sendOSCData = async () => {
     try {
         const Room1 = require('../models/room1.model'); 
         const Room2 = require('../models/room2.model'); 
@@ -18,13 +18,13 @@ const sendOSCDataOnStartup = async () => {
         oscClient.send('/room2Stats', `Room 2: ${roomUser2.length}`);
         oscClient.send('/room3Stats', `Room 3: ${roomUser3.length}`);
 
-        console.log('OSC data sent on startup');
+        console.log('OSC data sent');
     } catch (error) {
-        console.error('Error sending OSC data on startup:', error);
+        console.error('Error sending OSC data:', error);
     }
 };
 
-sendOSCDataOnStartup(); // Send OSC data when the module is imported
+sendOSCData(); // Send OSC data when the module is imported
 
 // Export the OSC client instance
 module.exports = oscClient;
