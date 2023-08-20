@@ -1,6 +1,7 @@
 const Room1 = require('../models/room1.model');
 const Room2 = require('../models/room2.model');
 const Room3 = require('../models/room3.model');
+const User = require('../models/user.model');
 const httpStatus = require('http-status-codes').StatusCodes;
 const oscClient = require('../startup/oscClient');
 
@@ -27,6 +28,12 @@ const room2Controller = {
         if (existingActiveRoomUser.length > 0) {
             console.error(`Duplicate active users in a room are not allowed`);
             return res.status(httpStatus.CONFLICT).json({ error: 'Duplicate active users in a room are not allowed' });
+        }
+
+        const userExists = await User.checkUserIdExists(req.body.user_id);
+        if (!userExists) {
+            console.error(`User with this ID does not exist`);
+            return res.status(httpStatus.CONFLICT).json({ error:`User with this ID does not exist`});
         }
 
         const newRoomUser = await Room2.createUser(req.body);

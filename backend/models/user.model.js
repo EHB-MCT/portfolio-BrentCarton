@@ -52,6 +52,19 @@ const User = {
 
         return userSchema.validate(user);
     },
+
+    /**
+    * Checks whether a user with the given user_id exists in the Users table.
+    * @param {number} user_id - The user_id to check for existence.
+     * @returns {Promise<boolean>} A promise that resolves to true if the user exists, or false if not.
+    */
+    checkUserIdExists: async (user_id) => {
+        const user = await knex(process.env.TABLE_USERS)
+            .where({ user_id })
+            .first();
+
+        return user !== undefined;
+    }
 };
 
 module.exports = User;
