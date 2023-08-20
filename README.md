@@ -95,6 +95,7 @@ The purpose of this project is to track users in different rooms. To visualize t
 2. Inside the OSC In node, change the IP to the same IP as in the `.env` file.
 3. If you're using the default IP address (127.0.0.1), ensure that the Node.js application and TouchDesigner are running on the same machine. If not, specify the appropriate IP address.
 
+Each face of the cube corresponds to a distinct room. The amplitude of the waves on each face reflects the number of occupants in the respective room. The left face corresponds to the first room, the right face to the second room, and the top face to the third room.
 ## API Documentation
 
 ### Base URL
