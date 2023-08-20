@@ -1,5 +1,8 @@
+// Import the Express library.
 const express = require('express');
+
 const { connectToDB } = require('./startup/db');
+
 require('dotenv').config();
 
 const app = express();

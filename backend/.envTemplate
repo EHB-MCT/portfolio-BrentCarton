@@ -1,6 +1,8 @@
 PORT=3000
-OSC_CLIENT_HOST=your_osc_client_host
+
+OSC_CLIENT_HOST=your_osc_client_host //put your IP here
 OSC_CLIENT_PORT=7000
+
 TABLE_USERS=users
 TABLE_ROOM1=room1
 TABLE_ROOM2=room2

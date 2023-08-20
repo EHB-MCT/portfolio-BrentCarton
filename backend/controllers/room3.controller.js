@@ -4,7 +4,18 @@ const Room3 = require('../models/room3.model');
 const httpStatus = require('http-status-codes').StatusCodes;
 const oscClient = require('../startup/oscClient');
 
+/**
+ * Controller for managing room users in Room3.
+ * @module room3Controller
+ */
 const room3Controller = {
+    /**
+     * Create a new room user in Room3.
+     * @async
+     * @param {Object} req - Express request object.
+     * @param {Object} res - Express response object.
+     * @returns {Object} - JSON response indicating the result of the creation.
+     */
     createRoomUser: async (req, res) => {
         const { error } = Room3.validateRoom3(req.body);
         if (error) {
@@ -31,6 +42,13 @@ const room3Controller = {
         oscClient.send('/room3Stats', `Room 3: ${roomUser3.length}`);
     },
 
+    /**
+     * Get room users in Room3 based on query parameters.
+     * @async
+     * @param {Object} req - Express request object with query parameters.
+     * @param {Object} res - Express response object.
+     * @returns {Object} - JSON response containing the retrieved room users.
+     */
     getRoomUsers: async (req, res) => {
         const queryParams = req.query;
         const dynamicQuery = {};
@@ -50,6 +68,13 @@ const room3Controller = {
         res.status(httpStatus.OK).json({ roomUsers });
     },
 
+    /**
+     * Delete an active room user in Room3.
+     * @async
+     * @param {Object} req - Express request object with user_id to delete.
+     * @param {Object} res - Express response object.
+     * @returns {Object} - JSON response indicating the result of the deletion.
+     */
     deleteRoomUser: async (req, res) => {
         const existingActiveRoomUser = await Room3.get({ user_id: req.body.user_id, is_active: true });
         if (existingActiveRoomUser.length === 0) {
@@ -66,6 +91,7 @@ const room3Controller = {
 
         console.log('User deleted');
         res.status(httpStatus.OK).json({ message: 'Room user deleted', roomUser: deletedRoomUser });
+
         const roomUser1 = await Room1.get({ is_active: true });
         const roomUser2 = await Room2.get({ is_active: true });
         const roomUser3 = await Room3.get({ is_active: true });

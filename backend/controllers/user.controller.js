@@ -1,7 +1,18 @@
 const User = require('../models/user.model');
 const httpStatus = require('http-status-codes').StatusCodes;
 
+/**
+ * Controller for managing user operations.
+ * @module userController
+ */
 const userController = {
+    /**
+     * Create a new user.
+     * @async
+     * @param {Object} req - Express request object.
+     * @param {Object} res - Express response object.
+     * @returns {Object} - JSON response indicating the result of the creation.
+     */
     createUser: async (req, res) => {
         const { error } = User.validateUser(req.body);
         if (error) {
@@ -21,6 +32,13 @@ const userController = {
         res.status(httpStatus.CREATED).json({ message: 'New user created', user: newUser });
     },
 
+    /**
+     * Get users based on query parameters.
+     * @async
+     * @param {Object} req - Express request object with query parameters.
+     * @param {Object} res - Express response object.
+     * @returns {Object} - JSON response containing the retrieved users.
+     */
     getUsers: async (req, res) => {
         const queryParams = req.query;
         const dynamicQuery = {};
@@ -40,6 +58,13 @@ const userController = {
         res.status(httpStatus.OK).json({ users });
     },
 
+    /**
+     * Update an existing user.
+     * @async
+     * @param {Object} req - Express request object.
+     * @param {Object} res - Express response object.
+     * @returns {Object} - JSON response indicating the result of the update.
+     */
     updateUser: async (req, res) => {
         const { id } = req.params;
 
@@ -66,6 +91,13 @@ const userController = {
         res.status(httpStatus.CREATED).json({ message: 'User updated', user: updatedUser });
     },
 
+    /**
+     * Delete an existing user.
+     * @async
+     * @param {Object} req - Express request object.
+     * @param {Object} res - Express response object.
+     * @returns {Object} - JSON response indicating the result of the deletion.
+     */
     deleteUser: async (req, res) => {
         const { id } = req.params;
 
