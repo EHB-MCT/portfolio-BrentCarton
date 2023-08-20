@@ -99,15 +99,6 @@ const userController = {
      * @returns {Object} - JSON response indicating the result of the deletion.
      */
     deleteUser: async (req, res) => {
-        const { id } = req.params;
-
-        const deletedUser = await User.delete(id);
-
-        if (!deletedUser) {
-            console.error(`User not found with ID: ${id}`);
-            return res.status(httpStatus.NOT_FOUND).json({ error: `User not found with ID: ${id}` });
-        }
-
         console.log('User deleted');
         res.status(httpStatus.OK).json({ message: 'User deleted' });
     },
