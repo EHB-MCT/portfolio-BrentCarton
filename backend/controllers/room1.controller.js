@@ -1,7 +1,9 @@
 const User = require('../models/user.model');
 const httpStatus = require('http-status-codes').StatusCodes;
 const oscClient = require('../startup/oscClient');
-const Room1 = require('../models/room1.model'); 
+const Room1 = require('../models/room1.model');
+const Room2 = require('../models/room2.model');
+const Room3 = require('../models/room3.model');
 
 /**
  * Controller for managing room users in Room1.
@@ -39,7 +41,15 @@ const room1Controller = {
         console.log('New room user created');
         res.status(httpStatus.CREATED).json({ message: 'New room user created', roomUser: newRoomUser });
 
-        const oscClient = require('../startup/oscClient');
+        const roomUser1 = await Room1.get({ is_active: true });
+        const roomUser2 = await Room2.get({ is_active: true });
+        const roomUser3 = await Room3.get({ is_active: true });
+
+        oscClient.send('/room1Stats', `Room 1: ${roomUser1.length}`);
+        oscClient.send('/room2Stats', `Room 2: ${roomUser2.length}`);
+        oscClient.send('/room3Stats', `Room 3: ${roomUser3.length}`);
+
+        console.log('OSC data sent');
     },
 
     /**
@@ -92,7 +102,15 @@ const room1Controller = {
         console.log('User deleted');
         res.status(httpStatus.OK).json({ message: 'Room user deleted', roomUser: deletedRoomUser });
 
-        const oscClient = require('../startup/oscClient');
+        const roomUser1 = await Room1.get({ is_active: true });
+        const roomUser2 = await Room2.get({ is_active: true });
+        const roomUser3 = await Room3.get({ is_active: true });
+
+        oscClient.send('/room1Stats', `Room 1: ${roomUser1.length}`);
+        oscClient.send('/room2Stats', `Room 2: ${roomUser2.length}`);
+        oscClient.send('/room3Stats', `Room 3: ${roomUser3.length}`);
+
+        console.log('OSC data sent');
     },
 };
 
