@@ -65,7 +65,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"Brent\",\n    \"last_name\": \"Carton\",\n    \"email\": \"brent@mail.be\"\n}",
+							"raw": "{\n    \"first_name\": \"Brent\",\n    \"last_name\": \"Carton\",\n    \"email\": \"test2@mail.be\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -204,7 +204,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\": 1\n}",
+							"raw": "{\n    \"user_id\": 7\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -321,7 +321,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/room3?room_id=1",
+							"raw": "http://localhost:3000/api/room3",
 							"protocol": "http",
 							"host": [
 								"localhost"
